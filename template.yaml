@@ -2973,7 +2973,7 @@ Resources:
                 - "sts:AssumeRole"
         Path: "/"
         ManagedPolicyArns:
-          ['arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole']
+          - 'arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole'
         Policies:
           -
             PolicyName: "S3BucketAccessPolicy"
