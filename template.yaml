@@ -41,6 +41,7 @@ Resources:
     
 
     ApiAccessLogsDataSet:
+        DependsOn: GlueDatabasAPIGWlog
         Type: "AWS::QuickSight::DataSet"
         Properties:
           AwsAccountId: !Ref "AWS::AccountId"
@@ -52,7 +53,7 @@ Resources:
               RelationalTable:
                 DataSourceArn: !GetAtt QuickSightDataSourceS3ThroughAthena.Arn
                 Catalog: "AwsDataCatalog"
-                Schema: "apigw-access-logs"
+                Schema: !Ref GlueDatabasAPIGWlog
                 Name: "logs"
                 InputColumns:
                   - Name: "requestid"
