@@ -2910,6 +2910,14 @@ Resources:
           TableType: EXTERNAL_TABLE
           Parameters:
             classification: json
+          PartitionKeys:
+          # Data is partitioned by month
+          - Name: year
+            Type: string
+          - Name: month
+            Type: string
+          - Name: day
+            Type: string
           StorageDescriptor: 
             Columns:
               - Name: requestid
@@ -3072,7 +3080,7 @@ Resources:
         SchemaChangePolicy:
           UpdateBehavior: UPDATE_IN_DATABASE
           DeleteBehavior: LOG
-        Configuration: "{\"Version\":1.0,\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}"
+       
         Schedule: 
           ScheduleExpression: "cron(00 15 * * ? *)"
           
