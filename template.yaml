@@ -2829,3 +2829,24 @@ Resources:
                 SheetContentType: INTERACTIVE
             Options:
               WeekStart: SUNDAY
+              
+    QuickSightTemplateAPIGWlogs:
+        Type: "AWS::QuickSight::Template"
+        Properties:
+            TemplateId: !Sub "${ProjectName}-template"
+            Name: !Sub "${ProjectName}-template"
+            AwsAccountId: !Ref AWS::AccountId
+            VersionDescription: "1"
+            SourceEntity:
+                SourceAnalysis:
+                    DataSetReferences:
+                      - 
+                        DataSetArn: !GetAtt ApiAccessLogsDataSet.Arn
+                        DataSetPlaceholder: "API Access Logs"
+                        
+                    Arn: !GetAtt ApiGwAnalysis.Arn
+            Permissions:
+              - 
+                Principal: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:group/default/${ProjectName}-Admins"
+                Actions:
+                  - "quicksight:DescribeTemplate"
