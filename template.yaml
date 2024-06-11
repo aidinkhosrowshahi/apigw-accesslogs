@@ -2884,6 +2884,6 @@ Resources:
                     DataSetReferences:
                       - 
                         DataSetArn: !GetAtt ApiAccessLogsDataSet.Arn
-                        DataSetPlaceholder: "API GW Access Logs"
+                        DataSetPlaceholder: "API Access Logs"
                      
                     Arn: !GetAtt QuickSightTemplateAPIGWlogs.Arn 
