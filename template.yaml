@@ -2990,6 +2990,7 @@ Resources:
           
     GlueCrawlerAPIGWlog:
       Type: AWS::Glue::Crawler
+      DependsOn: GlueTableAPIGWlog
       Properties:
         Name: !Sub "${ProjectName}" 
         Role: !GetAtt GlueCrawlerRoleAPIGWlog.Arn
@@ -2999,7 +3000,7 @@ Resources:
           CatalogTargets:
             - DatabaseName: !Ref GlueDatabasAPIGWlog
               Tables:
-                - !Ref GlueTableAPIGWlog
+                - logs
         
         RecrawlPolicy:
           RecrawlBehavior: CRAWL_EVERYTHING
