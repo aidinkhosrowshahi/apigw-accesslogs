@@ -2887,3 +2887,62 @@ Resources:
                         DataSetPlaceholder: "API Access Logs"
                      
                     Arn: !GetAtt QuickSightTemplateAPIGWlogs.Arn 
+                
+    GlueTableAPIGWlog:
+      Type: AWS::Glue::Table
+      Properties: 
+        DatabaseName: !Sub "${ProjectName}" 
+        CatalogId: !Ref "AWS::AccountId"
+        TableInput: 
+          Name: logs
+          Description: API Gateway access logs
+          TableType: EXTERNAL_TABLE
+          Parameters:
+            classification: json
+          StorageDescriptor: 
+            Columns:
+              - Name: requestid
+                Type: string
+              - Name: ip
+                Type: string
+              - Name: requesttime
+                Type: string
+              - Name: httpmethod
+                Type: string
+              - Name: routekey
+                Type: string
+              - Name: status
+                Type: string
+              - Name: protocol
+                Type: string
+              - Name: responselength
+                Type: string
+              - Name: extendedrequestid
+                Type: string
+              - Name: accountid
+                Type: string
+              - Name: apiid
+                Type: string
+              - Name: authorizerclaimsproperty
+                Type: string
+              - Name: authorizerprincipalid
+                Type: string
+              - Name: authorizerproperty
+                Type: string
+              - Name: awsendpointrequestid
+                Type: string
+              - Name: deploymentid
+                Type: string
+              - Name: domainname
+                Type: string
+              - Name: domainprefix
+                Type: string
+              - Name: errormessage
+                Type: string
+              - Name: errorresponsetype
+                Type: string
+            Location: s3://apigw-accesslogs-core-accesslogsbucket-hrefulcjxwcr/logs/
+            InputFormat: org.apache.hadoop.mapred.TextInputFormat
+            OutputFormat: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat
+            SerdeInfo: 
+              SerializationLibrary: org.openx.data.jsonserde.JsonSerDe
