@@ -2993,13 +2993,14 @@ Resources:
       Properties:
         Name: !Sub "${ProjectName}" 
         Role: !GetAtt GlueCrawlerRoleAPIGWlog.Arn
+        Description: AWS Glue crawler to crawl API Gateway Access Logs
         DatabaseName: !Ref GlueDatabasAPIGWlog
         Targets:
           CatalogTargets:
             - DatabaseName: !Ref GlueDatabasAPIGWlog
               Tables:
                 - !Sub "${ProjectName}" 
-        Classifiers: []
+        
         RecrawlPolicy:
           RecrawlBehavior: CRAWL_EVERYTHING
         SchemaChangePolicy:
