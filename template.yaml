@@ -2887,7 +2887,17 @@ Resources:
                         DataSetPlaceholder: "API Access Logs"
                      
                     Arn: !GetAtt QuickSightTemplateAPIGWlogs.Arn 
-                
+    
+    
+    GlueDatabasAPIGWlog:
+      Type: AWS::Glue::Database
+      Properties:
+        CatalogId: !Ref AWS::AccountId
+        DatabaseInput:
+          Name: !Sub "${ProjectName}" 
+          Description: Database for storing API Gateway access logs
+    
+    
     GlueTableAPIGWlog:
       Type: AWS::Glue::Table
       Properties: 
