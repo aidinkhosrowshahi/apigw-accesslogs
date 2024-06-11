@@ -2962,30 +2962,37 @@ Resources:
       Type: AWS::IAM::Role
       Properties:
         AssumeRolePolicyDocument:
-          Version: '2012-10-17'
+          Version: "2012-10-17"
           Statement:
-            - Effect: Allow
+            -
+              Effect: "Allow"
               Principal:
-                Service: glue.amazonaws.com
-              Action: sts:AssumeRole
+                Service:
+                  - "glue.amazonaws.com"
+              Action:
+                - "sts:AssumeRole"
+        Path: "/"
+        ManagedPolicyArns:
+          ['arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole']
         Policies:
-          - PolicyName: GlueCrawlerPolicy
+          -
+            PolicyName: "S3BucketAccessPolicy"
             PolicyDocument:
-              Version: '2012-10-17'
+              Version: "2012-10-17"
               Statement:
-                - Effect: Allow
-                  Action:
-                    - s3:GetObject
-                    - s3:PutObject
-                    - s3:ListBucket
-                    - glue:CreateTable
-                    - glue:UpdateTable
-                    - glue:GetTable
-                    - glue:GetTableVersion
-                    - glue:GetTableVersions
-                    - glue:BatchCreatePartition
-                    - glue:BatchDeletePartition
-                  Resource: "*"
+                -
+                  Effect: "Allow"
+                  Action: 
+                    - "s3:GetObject"
+                    - "s3:PutObject"
+                  Resource: 
+                  
+                    - "arn:aws:s3:::apigw-accesslogs-core-accesslogsbucket-hrefulcjxwcr*""
+                    # !Join
+                    #   - ''
+                    #   - - !GetAtt MyS3Bucket.Arn
+                    #     - "*"
+                     
 
           
     GlueCrawlerAPIGWlog:
