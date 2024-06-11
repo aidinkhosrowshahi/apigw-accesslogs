@@ -2952,6 +2952,69 @@ Resources:
                 Type: string
               - Name: errorresponsetype
                 Type: string
+              - Name: errorvalidationerrorstring
+                Type: string
+              - Name: identityaccountid
+                Type: string
+              - Name: identityapikeyid
+                Type: string
+              - Name: identitycaller
+                Type: string
+              - Name: identitycognitoauthenticationprovider
+                Type: string
+              - Name: identitycognitoauthenticationtype
+                Type: string
+              - Name: identitycognitoidentityid
+                Type: string
+              - Name: identitycognitoidentitypoolid
+                Type: string
+              - Name: identityprincipalorgid
+                Type: string
+              - Name: identityvpcid
+                Type: string
+              - Name: identityvpceid
+                Type: string
+              - Name: identityuser
+                Type: string
+              - Name: identityuseragent
+                Type: string
+              - Name: identityuserarn
+                Type: string
+              - Name: path
+                Type: string
+              - Name: requestoverrideheader
+                Type: string
+              - Name: requestoverridepath
+                Type: string
+              - Name: requestoverridequerystring
+                Type: string
+              - Name: responseoverrideheader
+                Type: string
+              - Name: responseoverridestatus
+                Type: string
+              - Name: requesttimeepoch
+                Type: string
+              - Name: resourcepath
+                Type: string
+              - Name: stage
+                Type: string
+              - Name: wafresponsecode
+                Type: string
+              - Name: webaclarn
+                Type: string
+              - Name: sub
+                Type: string
+              - Name: clientid
+                Type: string
+              - Name: aud
+                Type: string
+              - Name: identity.apikeyname
+                Type: string
+              - Name: identity.usageplanname
+                Type: string
+              - Name: date
+                Type: string
+
             Location: s3://apigw-accesslogs-core-accesslogsbucket-hrefulcjxwcr/logs/
             InputFormat: org.apache.hadoop.mapred.TextInputFormat
             OutputFormat: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat
