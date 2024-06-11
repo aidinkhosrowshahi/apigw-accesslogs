@@ -2901,7 +2901,7 @@ Resources:
     GlueTableAPIGWlog:
       Type: AWS::Glue::Table
       Properties: 
-        DatabaseName: !Sub "${ProjectName}" 
+        DatabaseName: !Ref GlueDatabasAPIGWlog
         CatalogId: !Ref "AWS::AccountId"
         TableInput: 
           Name: logs
