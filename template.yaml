@@ -2870,7 +2870,7 @@ Resources:
                   - "quicksight:DeleteDashboard"
                   - "quicksight:DescribeDashboardPermissions"
                   - "quicksight:UpdateDashboardPublishedVersion"
-            SourceEntity:
+           
             VersionDescription: "1"
             DashboardPublishOptions:
                 AdHocFilteringOption:
