@@ -3005,8 +3005,6 @@ Resources:
         SchemaChangePolicy:
           UpdateBehavior: UPDATE_IN_DATABASE
           DeleteBehavior: LOG
-        LineageConfiguration:
-          CrawlerLineageSettings: DISABLE
         Schedule:
           ScheduleExpression: "cron(00 15 * * ? *)"
           State: SCHEDULED
