@@ -2986,13 +2986,8 @@ Resources:
                     - "s3:GetObject"
                     - "s3:PutObject"
                   Resource: 
-                    - 'arn:aws:s3:::apigw-accesslogs-core-accesslogsbucket-hrefulcjxwcr*'
-                    # !Join
-                    #   - ''
-                    #   - - !GetAtt MyS3Bucket.Arn
-                    #     - "*"
-                     
-
+                    - "arn:aws:s3:::apigw-accesslogs-core-accesslogsbucket-hrefulcjxwcr*"
+                  
           
     GlueCrawlerAPIGWlog:
       Type: AWS::Glue::Crawler
