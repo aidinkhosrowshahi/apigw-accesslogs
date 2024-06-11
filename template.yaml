@@ -3006,5 +3006,6 @@ Resources:
         SchemaChangePolicy:
           UpdateBehavior: UPDATE_IN_DATABASE
           DeleteBehavior: LOG
-        Schedule: "cron(00 15 * * ? *)"
+        Schedule: 
+          ScheduleExpression: "cron(00 15 * * ? *)"
           
