@@ -2904,7 +2904,7 @@ Resources:
         DatabaseName: !Ref GlueDatabasAPIGWlog
         CatalogId: !Ref "AWS::AccountId"
         TableInput: 
-          Name: !Sub "${ProjectName}" 
+          Name: logs
           Description: API Gateway access logs
           TableType: EXTERNAL_TABLE
           Parameters:
@@ -2987,24 +2987,6 @@ Resources:
                     - glue:BatchDeletePartition
                   Resource: "*"
 
-    GlueCrawler:
-      Type: AWS::Glue::Crawler
-      Properties:
-        Name: !Sub "${ProjectName}" 
-        Role: !GetAtt GlueCrawlerRoleAPIGWlog.Arn
-        DatabaseName: !Ref GlueDatabasAPIGWlog
-        Targets:
-          S3Targets:
-          - Path: !Join ["", ["s3://", !Ref "apigw-accesslogs-core-accesslogsbucket-hrefulcjxwcr", "/input/lab5/json/"]]
-        Classifiers: []
-        RecrawlPolicy:
-          RecrawlBehavior: CRAWL_EVERYTHING
-        SchemaChangePolicy:
-          UpdateBehavior: UPDATE_IN_DATABASE
-          DeleteBehavior: LOG
-        Schedule:
-          ScheduleExpression: "cron(00 15 * * ? *)"
-          State: SCHEDULED
           
     GlueCrawlerAPIGWlog:
       Type: AWS::Glue::Crawler
