@@ -2999,7 +2999,7 @@ Resources:
           CatalogTargets:
             - DatabaseName: !Ref GlueDatabasAPIGWlog
               Tables:
-                - !Sub "${ProjectName}" 
+                - !Ref GlueTableAPIGWlog
         
         RecrawlPolicy:
           RecrawlBehavior: CRAWL_EVERYTHING
