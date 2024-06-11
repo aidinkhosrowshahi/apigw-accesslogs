@@ -2904,7 +2904,7 @@ Resources:
         DatabaseName: !Ref GlueDatabasAPIGWlog
         CatalogId: !Ref "AWS::AccountId"
         TableInput: 
-          Name: logs
+          Name: !Sub "${ProjectName}" 
           Description: API Gateway access logs
           TableType: EXTERNAL_TABLE
           Parameters:
@@ -2956,3 +2956,75 @@ Resources:
             OutputFormat: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat
             SerdeInfo: 
               SerializationLibrary: org.openx.data.jsonserde.JsonSerDe
+    
+    
+    GlueCrawlerRoleAPIGWlog:
+      Type: AWS::IAM::Role
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service: glue.amazonaws.com
+              Action: sts:AssumeRole
+        Policies:
+          - PolicyName: GlueCrawlerPolicy
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - s3:GetObject
+                    - s3:PutObject
+                    - s3:ListBucket
+                    - glue:CreateTable
+                    - glue:UpdateTable
+                    - glue:GetTable
+                    - glue:GetTableVersion
+                    - glue:GetTableVersions
+                    - glue:BatchCreatePartition
+                    - glue:BatchDeletePartition
+                  Resource: "*"
+
+    GlueCrawler:
+      Type: AWS::Glue::Crawler
+      Properties:
+        Name: !Sub "${ProjectName}" 
+        Role: !GetAtt GlueCrawlerRoleAPIGWlog.Arn
+        DatabaseName: !Ref GlueDatabasAPIGWlog
+        Targets:
+          S3Targets:
+          - Path: !Join ["", ["s3://", !Ref "apigw-accesslogs-core-accesslogsbucket-hrefulcjxwcr", "/input/lab5/json/"]]
+        Classifiers: []
+        RecrawlPolicy:
+          RecrawlBehavior: CRAWL_EVERYTHING
+        SchemaChangePolicy:
+          UpdateBehavior: UPDATE_IN_DATABASE
+          DeleteBehavior: LOG
+        Schedule:
+          ScheduleExpression: "cron(00 15 * * ? *)"
+          State: SCHEDULED
+          
+    GlueCrawlerAPIGWlog:
+      Type: AWS::Glue::Crawler
+      Properties:
+        Name: !Sub "${ProjectName}" 
+        Role: !GetAtt GlueCrawlerRoleAPIGWlog.Arn
+        DatabaseName: !Ref GlueDatabasAPIGWlog
+        Targets:
+          CatalogTargets:
+            - DatabaseName: !Ref GlueDatabasAPIGWlog
+              Tables:
+                - !Sub "${ProjectName}" 
+        Classifiers: []
+        RecrawlPolicy:
+          RecrawlBehavior: CRAWL_EVERYTHING
+        SchemaChangePolicy:
+          UpdateBehavior: UPDATE_IN_DATABASE
+          DeleteBehavior: LOG
+        LineageConfiguration:
+          CrawlerLineageSettings: DISABLE
+        Schedule:
+          ScheduleExpression: "cron(00 15 * * ? *)"
+          State: SCHEDULED
