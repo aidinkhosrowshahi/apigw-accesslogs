@@ -2850,3 +2850,40 @@ Resources:
                 Principal: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:group/default/${ProjectName}-Admins"
                 Actions:
                   - "quicksight:DescribeTemplate"
+                  
+    QuickSightDashboardAPIGWlog:
+        Type: "AWS::QuickSight::Dashboard"
+       
+        Properties:
+            DashboardId: !Sub "${ProjectName}-APIGWlogDashboard"
+            Name: !Sub "${ProjectName}-APIGWlogDashboard"
+            AwsAccountId: !Ref AWS::AccountId
+            Permissions:
+              - 
+                Principal: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:group/default/${ProjectName}-Admins"
+                Actions:
+                  - "quicksight:DescribeDashboard"
+                  - "quicksight:ListDashboardVersions"
+                  - "quicksight:UpdateDashboardPermissions"
+                  - "quicksight:QueryDashboard"
+                  - "quicksight:UpdateDashboard"
+                  - "quicksight:DeleteDashboard"
+                  - "quicksight:DescribeDashboardPermissions"
+                  - "quicksight:UpdateDashboardPublishedVersion"
+            SourceEntity:
+            VersionDescription: "1"
+            DashboardPublishOptions:
+                AdHocFilteringOption:
+                    AvailabilityStatus: "ENABLED"
+                ExportToCSVOption:
+                    AvailabilityStatus: "ENABLED"
+                SheetControlsOption:
+                    VisibilityState: "EXPANDED"
+            SourceEntity:
+                SourceTemplate:
+                    DataSetReferences:
+                      - 
+                        DataSetArn: !GetAtt ApiAccessLogsDataSet.Arn
+                        DataSetPlaceholder: "API GW Access Logs"
+                     
+                    Arn: !GetAtt QuickSightTemplateAPIGWlogs.Arn 
