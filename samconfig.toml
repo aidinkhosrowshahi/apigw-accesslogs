@@ -1,0 +1,10 @@
+version = 0.1
+[default.deploy.parameters]
+stack_name = "apigw-logging"
+resolve_s3 = true
+s3_prefix = "apigw-logging"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "ProjectName=\"apigw-logging\" CreateS3AccessLogs=\"Yes\" CreateFirehoseDelivery=\"Yes\""
+image_repositories = []
