@@ -1,4 +1,5 @@
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
 Description: "This is the template for creating Amazon API Gateway access logging"
 Parameters:
     ProjectName:
@@ -9,7 +10,42 @@ Parameters:
         #MaxLength : 42
         #AllowedPattern : "^[a-z0-9]*$"
 
+    CreateS3AccessLogs:
+        Type: "String"
+        Default: "Yes"
+        AllowedValues: 
+          - "Yes"
+          - "No"
+        Description: Create an S3 bucket for API Gateway Access Logs
+    CreateFirehoseDelivery:
+        Type: "String"
+        Default: "Yes"
+        AllowedValues: 
+          - "Yes"
+          - "No"
+        Description: Create an Amazon Kinesis Firehose delivery stream to deliver logs to an S3 bucket.
+
+
+Conditions:
+  CreateS3bucket: !Equals 
+    - !Ref CreateS3AccessLogs
+    - "Yes"
+  CreateFirehose: !Equals 
+    - !Ref CreateFirehoseDelivery
+    - "Yes"
+
+
+
 Resources:
+
+    AccessLogsBucket:
+      Condition: CreateS3bucket
+      Type: AWS::S3::Bucket
+      DeletionPolicy: Retain
+      
+    
+
+
     QuickSightDataSourceS3ThroughAthena:
         Type: "AWS::QuickSight::DataSource"
         # DependsOn: 
