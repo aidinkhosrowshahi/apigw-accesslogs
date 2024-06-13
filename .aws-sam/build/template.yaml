@@ -3032,7 +3032,7 @@ Resources:
         UpdateBehavior: UPDATE_IN_DATABASE
         DeleteBehavior: LOG
       Schedule:
-        ScheduleExpression: cron(00 15 * * ? *)
+        ScheduleExpression: cron(0/10 * * * ? *)
 Outputs:
   AccessLogsS3bucket:
     Description: S3 Access Logs bucket

@@ -3210,7 +3210,7 @@ Resources:
         DeleteBehavior: LOG
      
       Schedule: 
-        ScheduleExpression: "cron(00 15 * * ? *)"
+        ScheduleExpression: "cron(0/10 * * * ? *)"
         
         
 Outputs:
