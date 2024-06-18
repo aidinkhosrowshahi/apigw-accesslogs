@@ -14,32 +14,6 @@ Parameters:
       Default: "cron(0/10 * * * ? *)"
       Description: "The schedule when the crawler runs. Use this cron schedule to control the frequency of data refresh"
 
-  # CreateS3AccessLogs:
-  #     Type: "String"
-  #     Default: "Yes"
-  #     AllowedValues: 
-  #       - "Yes"
-  #       - "No"
-  #     Description: Create an S3 bucket for API Gateway Access Logs
-  # CreateFirehoseDelivery:
-  #     Type: "String"
-  #     Default: "Yes"
-  #     AllowedValues: 
-  #       - "Yes"
-  #       - "No"
-  #     Description: Create an Amazon Kinesis Firehose delivery stream to deliver logs to an S3 bucket.
-
-
-# Conditions:
-#   CreateS3bucket: !Equals 
-#     - !Ref CreateS3AccessLogs
-#     - "Yes"
-#   CreateFirehose: !Equals 
-#     - !Ref CreateFirehoseDelivery
-#     - "Yes"
-
-
-
 Resources:
 
 
@@ -48,7 +22,7 @@ Resources:
     Properties:
       CodeUri: src/
       Handler: app.lambda_handler
-      Runtime: python3.8
+      Runtime: python3.9
       MemorySize: 512
       Timeout: 300 # 5 minutes
       Policies:
@@ -63,12 +37,12 @@ Resources:
                 - 'arn:aws:apigateway:*::/usageplans/*/*'
 
   AccessLogsBucket:
-    # Condition: CreateS3bucket
+    
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
     
   DeliveryStream:
-    # Condition: CreateFirehose
+    
     DependsOn: AccessLogsBucket
     Type: AWS::KinesisFirehose::DeliveryStream
     DependsOn:
