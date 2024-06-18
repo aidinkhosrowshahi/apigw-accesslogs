@@ -9,6 +9,10 @@ Parameters:
       #MinLength : 3
       #MaxLength : 42
       #AllowedPattern : "^[a-z0-9]*$"
+  DataRefreshFrequency:
+      Type: "String"
+      Default: "cron(0/10 * * * ? *)"
+      Description: "The schedule when the crawler runs. Use this cron schedule to control the frequency of data refresh"
 
   # CreateS3AccessLogs:
   #     Type: "String"
@@ -3210,7 +3214,7 @@ Resources:
         DeleteBehavior: LOG
      
       Schedule: 
-        ScheduleExpression: "cron(0/10 * * * ? *)"
+        ScheduleExpression: !Ref DataRefreshFrequency
         
         
 Outputs:
