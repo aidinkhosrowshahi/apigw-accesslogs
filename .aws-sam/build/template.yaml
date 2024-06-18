@@ -8,6 +8,11 @@ Parameters:
     Description: Enter an all-lowercase single-word name which is between 3 and 42
       chars long. An S3 bucket will be created with this name to store all collected
       data.
+  DataRefreshFrequency:
+    Type: String
+    Default: cron(0/10 * * * ? *)
+    Description: The schedule when the crawler runs. Use this cron schedule to control
+      the frequency of data refresh
 Resources:
   ApiGatewayAccessLogsEnrichmentFunction:
     Type: AWS::Serverless::Function
@@ -3032,7 +3037,8 @@ Resources:
         UpdateBehavior: UPDATE_IN_DATABASE
         DeleteBehavior: LOG
       Schedule:
-        ScheduleExpression: cron(0/10 * * * ? *)
+        ScheduleExpression:
+          Ref: DataRefreshFrequency
 Outputs:
   AccessLogsS3bucket:
     Description: S3 Access Logs bucket
