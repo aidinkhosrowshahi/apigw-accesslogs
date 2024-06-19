@@ -62,6 +62,8 @@ If you have not activated Amazon QuickSight in your AWS account, follow the step
 5. Add yourself as an administrator to the dashboard by selecting the newly created group name, then click “ADD USER.”
 6. Copy the project name without '-Admins' as this is required for the project name parameters in the SAM template. It needs to be the exact same name for deployment.
 
+ ![Pre-requisites1](./assets/kaidin-prerequisite2.jpg)
+
 ## Implementation
 
 Note-1: This solution supports only REST API Gateway.
