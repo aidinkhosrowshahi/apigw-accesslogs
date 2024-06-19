@@ -100,6 +100,10 @@ Wait a few minutes for the deployment to complete. Once the stack has been succe
 1. Followthe instructions to authorize Amazon QuickSight to access API Gateway S3 access logs.
 2. Select the S3 access logs bucket created and Finish and Save
 
+![Pre-requisites1](./assets/kaidin-qs-security.jpg)
+![Pre-requisites1](./assets/kaidin-s3-permissions.jpg)
+
+
 ## Configure API Gateway to stream access logs to this Kinesis Firehose delivery stream
 
 1. You can now configure API Gateway to stream access logs to this Kinesis Firehose delivery stream. Follow these instructions to enable access logging on your API stages using the ARN of the Firehose delivery stream created via SAM template.
