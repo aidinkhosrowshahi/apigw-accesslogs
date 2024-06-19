@@ -31,16 +31,16 @@ The integration works by forwarding API Gateway access logs from your Amazon API
 * AWS Glue crawler to provide fresher data to QuickSight
 * Amazon QuickSight for analytics and visualization
 
-# Streamlining API Access Logs
+## Streamlining API Access Logs
 API access logs are streamed in near real-time from Amazon API Gateway to Amazon Kinesis Data Firehose. Kinesis Data Firehose buffers these records, enriching them with information from the API usage plans. It then writes batches of enhanced records to an Amazon S3 bucket, ensuring durable and secure storage. To enrich the access logs, an AWS Lambda function is used. The Lambda function retrieves API Gateway usage plan details and loads them into memory. During each invocation, it processes each access log record from Kinesis Firehose by decoding it from base64-encoded binary. The record is then enriched with the usage plan name and customer name before being re-encoded to base64 binary and returned to the Kinesis Firehose stream.
 
-# Indexing Access Logs:
+## Indexing Access Logs:
 Metadata for the API access logs is stored in an AWS Glue Data Catalog, which Amazon QuickSight uses for querying. An AWS Glue crawler identifies and indexes newly written access logs. You can adjust the frequency of the Glue crawler to ensure fresher data is available in Amazon QuickSight by updating the DataRefreshFrequency parameter of the SAM template when deploying the solution. The default data refresh frequency is every 10 minutes (cron(0/10 * * * ? *)).
 
-# Visualizing Data:
+## Visualizing Data:
 Amazon QuickSight is configured to use the S3 location of the access logs as a data source, enabling comprehensive analysis and visualization.
 
-# Pre-requisites 
+## Pre-requisites 
 
 If you have not activated Amazon QuickSight in your AWS account, follow the steps below. Otherwise, you can skip to step 2.
 
