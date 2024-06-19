@@ -127,6 +127,7 @@ Once you configure API Gateway access logs, it takes a few minutes for the logs 
 **400 errors (quota exceeded, unauthorized, and invalid-signature) requests**
 ![dashboard overview](./assets/kaidin-400-errors.jpg)
 
+
 **API by usage plan**
 ![dashboard overview](./assets/kaidin-usageplan.jpg)
 ![dashboard overview](./assets/kaidin-usageplan2.jpg)
