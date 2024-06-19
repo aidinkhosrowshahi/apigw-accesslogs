@@ -87,7 +87,13 @@ Enter the following parameters for deployment:
 - ProjectName: Use the project name without '-Admins'. Ensure it matches the one created in the Prerequisites section 6.
 - DataRefreshFrequency: You can leave as default (every 10 minutes) or customize it based on your requirement
 
+![deployment](./assets/kaidin-deployment1.jpg)
+ 
+![deployment](./assets/kaidin-deployment2.jpg)
+
 Wait a few minutes for the deployment to complete. Once the stack has been successfully created, copy the Amazon Resource Names (ARNs) of the Kinesis Firehose and S3 bucket from the output. These resource ARNs are required for the next steps in configuring API Gateway access logging.
+
+![deployment](./assets/kaidin-deployment3.jpg)
 
 ## Authorize Amazon QuickSight to access your Amazon S3 bucket
 
