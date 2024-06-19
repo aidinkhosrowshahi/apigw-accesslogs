@@ -21,6 +21,9 @@ In this post, we will show how to visualize and analyze API Gateway access logs 
 
 As we are using Amazon QuickSight for the visualization part, you have the flexibility to customize these tables and graphs based on your business use case. You can also set up Amazon QuickSight Paginated Reports and share reports and data exports from a single, fully managed, cloud-based business intelligence (BI) solution. API owners and product managers can receive daily or weekly reports on your API consumption.
 
+![Test Image 4] https://github.com/aidinkhosrowshahi/apigw-accesslogs/blob/main/assets/kaidin-dashboard-overview.jpg
+
+
 ## Solution Overview 
 
 The integration works by forwarding API Gateway access logs from your Amazon API Gateway to S3 via Amazon Kinesis Data Firehose. This solution uses the following AWS services to provide near real-time logging analytics:
