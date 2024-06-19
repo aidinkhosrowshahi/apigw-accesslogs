@@ -21,7 +21,7 @@ In this post, we will show how to visualize and analyze API Gateway access logs 
 
 As we are using Amazon QuickSight for the visualization part, you have the flexibility to customize these tables and graphs based on your business use case. You can also set up Amazon QuickSight Paginated Reports and share reports and data exports from a single, fully managed, cloud-based business intelligence (BI) solution. API owners and product managers can receive daily or weekly reports on your API consumption.
 
-![Test Image 4] https://github.com/aidinkhosrowshahi/apigw-accesslogs/blob/main/assets/kaidin-dashboard-overview.jpg
+![Architecture diagram](./assets/kaidin-dashboard-overview.jpg)
 
 
 ## Solution Overview 
