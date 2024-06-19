@@ -21,7 +21,7 @@ In this post, we will show how to visualize and analyze API Gateway access logs 
 
 As we are using Amazon QuickSight for the visualization part, you have the flexibility to customize these tables and graphs based on your business use case. You can also set up Amazon QuickSight Paginated Reports and share reports and data exports from a single, fully managed, cloud-based business intelligence (BI) solution. API owners and product managers can receive daily or weekly reports on your API consumption.
 
-![Architecture diagram](./assets/kaidin-dashboard-overview.jpg)
+![dashboard overview](./assets/kaidin-dashboard-overview.jpg)
 
 
 ## Solution Overview 
@@ -33,6 +33,8 @@ The integration works by forwarding API Gateway access logs from your Amazon API
 * AWS Lambda function for log enrichment
 * AWS Glue crawler to provide fresher data to QuickSight
 * Amazon QuickSight for analytics and visualization
+
+  ![Architecture diagram](./assets/kaidin-solution-overview.jpg)
 
 ## Streamlining API Access Logs
 API access logs are streamed in near real-time from Amazon API Gateway to Amazon Kinesis Data Firehose. Kinesis Data Firehose buffers these records, enriching them with information from the API usage plans. It then writes batches of enhanced records to an Amazon S3 bucket, ensuring durable and secure storage. To enrich the access logs, an AWS Lambda function is used. The Lambda function retrieves API Gateway usage plan details and loads them into memory. During each invocation, it processes each access log record from Kinesis Firehose by decoding it from base64-encoded binary. The record is then enriched with the usage plan name and customer name before being re-encoded to base64 binary and returned to the Kinesis Firehose stream.
@@ -51,6 +53,8 @@ If you have not activated Amazon QuickSight in your AWS account, follow the step
     1. Navigate to Amazon QuickSight service from the AWS Management console.
     2. Click **Sign up for QuickSight**
     3. Enter Email and account name
+
+  ![Pre-requisites1](./assets/kaidin-prerequisite1.jpg)
 
 2. Once Amazon QuickSight account setup is complete, from the Amazon QuickSight console, select your username to open the menu. Select “Manage QuickSight”
 3. On the left menu, select “Manage Groups”
