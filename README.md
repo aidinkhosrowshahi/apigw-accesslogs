@@ -138,7 +138,7 @@ Once you configure API Gateway access logs, it takes a few minutes for the logs 
 
 ![dashboard overview](./assets/kaidin-dashboard-navigation.jpg)
 
-## Clean up 
+## Cleaning Up 
 
 The sam delete command deletes an AWS SAM application by deleting the AWS CloudFormation stack, the artifacts that were packaged and deployed to Amazon S3 and Amazon ECR, and the AWS SAM template file.
 
