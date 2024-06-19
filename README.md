@@ -101,6 +101,7 @@ Wait a few minutes for the deployment to complete. Once the stack has been succe
 2. Select the S3 access logs bucket created and Finish and Save
 
 ![Pre-requisites1](./assets/kaidin-qs-security.jpg)
+
 ![Pre-requisites1](./assets/kaidin-s3-permissions.jpg)
 
 
