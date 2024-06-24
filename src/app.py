@@ -1,5 +1,6 @@
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: MIT-0
+# Lambda enrichement code is based https://computeblog-us-east-1.s3.amazonaws.com/apigateway-visualize-usageplans/api-gateway-access-logs-visualization-enrichment-function.zip
 
 import boto3
 import base64
