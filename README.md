@@ -29,11 +29,11 @@ As we are using Amazon QuickSight for the visualization part, you have the flexi
 
 The integration works by forwarding API Gateway access logs from your Amazon API Gateway to S3 via Amazon Kinesis Data Firehose. This solution uses the following AWS services to provide near real-time logging analytics:
 
-* Amazon S3 bucket ensuring durable and secure storage
-* Amazon Kinesis Data Firehose for delivering logs into an S3 bucket
-* AWS Lambda function for log enrichment
-* AWS Glue crawler to provide fresher data to QuickSight
-* Amazon QuickSight for analytics and visualization
+* Amazon S3 bucket ensuring durable and secure storage.
+* Amazon Kinesis Data Firehose for delivering logs into an S3 bucket.
+* AWS Lambda function for log enrichment.
+* AWS Glue crawler to provide fresher data to QuickSight.
+* Amazon QuickSight for analytics and visualization.
 
   ![Architecture diagram](./assets/kaidin-solution-overview.jpg)
 
@@ -50,16 +50,16 @@ Amazon QuickSight is configured to use the S3 location of the access logs as a d
 
 If you have not activated Amazon QuickSight in your AWS account, follow the steps below. Otherwise, you can skip to step 2.
 
-1. Create a QuickSight Account
+1. Create a QuickSight Account.
     1. Navigate to Amazon QuickSight service from the AWS Management console.
-    2. Click **Sign up for QuickSight**
-    3. Enter Email and account name
+    2. Click **Sign up for QuickSight**.
+    3. Enter Email and account name.
 
   ![Pre-requisites1](./assets/kaidin-prerequisite1.jpg)
 
-2. Once Amazon QuickSight account setup is complete, from the Amazon QuickSight console, select your username to open the menu. Select “Manage QuickSight”
-3. On the left menu, select “Manage Groups”
-4. Select “NEW GROUP” button and name the group in the format “<projectName>-Admins” (It is case sensitive). Select “CREATE.” For example, apiaccesslogs-Admins
+2. Once Amazon QuickSight account setup is complete, from the Amazon QuickSight console, select your username to open the menu. Select “Manage QuickSight”.
+3. On the left menu, select “Manage Groups”.
+4. Select “NEW GROUP” button and name the group in the format “<projectName>-Admins” (It is case sensitive). Select “CREATE.” For example, apiaccesslogs-Admins.
 5. Add yourself as an administrator to the dashboard by selecting the newly created group name, then click “ADD USER.”
 6. Copy the project name without '-Admins' as this is required for the project name parameters in the SAM template. It needs to be the exact same name for deployment.
 
@@ -86,9 +86,9 @@ sam deploy -g
 
 Enter the following parameters for deployment:
 
-- Stack Name: Use if for stack name. For example apgwaccesslogs
+- Stack Name: Use if for stack name. For example apgwaccesslogs.
 - ProjectName: Use the project name without '-Admins'. Ensure it matches the one created in the Prerequisites section 6.
-- DataRefreshFrequency: You can leave as default (every 10 minutes) or customize it based on your requirement
+- DataRefreshFrequency: You can leave as default (every 10 minutes) or customize it based on your requirement.
 
 ![deployment](./assets/kaidin-deployment1.jpg)
  
