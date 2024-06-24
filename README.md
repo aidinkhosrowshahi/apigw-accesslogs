@@ -101,7 +101,7 @@ Wait a few minutes for the deployment to complete. Once the stack has been succe
 ## Authorize Amazon QuickSight to access your Amazon S3 bucket
 
 1. Followthe instructions to authorize Amazon QuickSight to access API Gateway S3 access logs.
-2. Select the S3 access logs bucket created and Finish and Save
+2. Select the S3 access logs bucket created and Finish and Save.
 
 ![Pre-requisites1](./assets/kaidin-qs-security.jpg)
 
@@ -137,7 +137,7 @@ Once you configure API Gateway access logs, it takes a few minutes for the logs 
 ## How to open the dashboard
 
 1. Navigate to the Amazon QuickSight console.
-2. Select Dashboad and open the deployed QuickSight dashboard 
+2. Select Dashboad and open the deployed QuickSight dashboard.
 
 ![dashboard overview](./assets/kaidin-dashboard-navigation.jpg)
 
