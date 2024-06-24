@@ -4,7 +4,7 @@
 
 You can use these logs to populate a business intelligence service, such as Amazon QuickSight, to analyze and report on usage patterns across your APIs and customers.
 
-In this post, we will show how to visualize and analyze API Gateway access logs using [Amazon QuickSight](https://aws.amazon.com/pm/quicksight/?gclid=Cj0KCQjwsuSzBhCLARIsAIcdLm74hGWXjb5bAd4qR2la6bGQGOk-pBcZgT6WC-ThSey1w42hoHlZNZ4aAnJAEALw_wcB&trk=0d87d95a-efb1-4f39-920f-1def3bd773b1&sc_channel=ps&ef_id=Cj0KCQjwsuSzBhCLARIsAIcdLm74hGWXjb5bAd4qR2la6bGQGOk-pBcZgT6WC-ThSey1w42hoHlZNZ4aAnJAEALw_wcB:G:s&s_kwcid=AL!4422!3!651737511557!e!!g!!amazon%20quicksight!19845796015!146736268949). This pre-built dashboard enables you to analyze API usage by visualizing the following components:
+In this post, we will show how to visualize and analyze API Gateway access logs using [Amazon QuickSight dahboard](https://docs.aws.amazon.com/quicksight/latest/user/example-create-a-dashboard.html). This pre-built dashboard enables you to analyze API usage by visualizing the following components:
 
 * 30 days of API usage by domain
 * API routes showing popular API paths
