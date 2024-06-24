@@ -69,7 +69,7 @@ If you have not activated Amazon QuickSight in your AWS account, follow the step
 
 Note: This solution supports only REST API Gateway.
 
-This solution won’t deploy and configure an API Gateway and assumes you already have an API Gateway API. If you do not, follow this tutorial to create an API. 
+This solution won’t deploy and configure an API Gateway and assumes you already have an API Gateway API. If you do not, follow [this tutorial](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-from-example.html) to create an API. 
 
 Deploy an AWS SAM template into your account. This template creates all components of the analytics pipeline, including an Amazon S3 bucket, Amazon Kinesis Data Firehose, AWS Lambda functions, AWS Glue, and Amazon QuickSight dashboards and visuals, using Infrastructure as Code (IaC).
 
