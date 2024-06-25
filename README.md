@@ -67,7 +67,7 @@ If you have not activated Amazon QuickSight in your AWS account, follow the step
 
 ## Implementation
 
-Note: This solution supports only REST API Gateway.
+Note: This solution supports only [REST API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-rest-api.html).
 
 This solution won’t deploy and configure an API Gateway and assumes you already have an API Gateway API. If you do not, follow [this tutorial](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-from-example.html) to create an API. 
 
