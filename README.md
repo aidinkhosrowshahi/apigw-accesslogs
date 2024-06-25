@@ -73,7 +73,7 @@ This solution won’t create an API Gateway in your AWS account and assumes you 
 
 Deploy an AWS SAM template into your account. This template creates all components of the analytics pipeline, including an Amazon S3 bucket, Amazon Data Firehose, AWS Lambda functions, AWS Glue, and Amazon QuickSight dashboards and visuals, using Infrastructure as Code (IaC).
 
-Once deployment is complete, we will configure our existing API Gateway to deliver access logs to the deployed Amazon Data Firehose.
+Once deployment is complete, we will configure our existing API Gateway to deliver access logs to the deployed Firehose stream.
 
 ## Launch the AWS SAM Template
 
