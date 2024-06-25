@@ -78,8 +78,8 @@ Deploy an AWS SAM template into your account. This template creates all componen
 From your local terminal, run the following commands:
 
 ```
-git clone git@ssh.gitlab.aws.dev:restapigw-access-logging/restapigw-access-logging.git
-cd restapigw-access-logging
+git clone https://github.com/aws-samples/apigw-log-analytic.git
+cd apigw-log-analytic
 sam build
 sam deploy -g 
 ```
@@ -148,7 +148,7 @@ The sam delete command deletes an AWS SAM application by deleting the AWS CloudF
 Note - API Gateway access logs will be retained in the S3 bucket for future reference. You may need to manually delete the bucket if necessary.
 
 ```
-cd apigw-accesslogs
+cd apigw-log-analytic
 sam delete
 ```
 
