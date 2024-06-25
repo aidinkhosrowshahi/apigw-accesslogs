@@ -96,7 +96,7 @@ Enter the following parameters for deployment:
  
 ![deployment](./assets/kaidin-deployment2.jpg)
 
-Wait a few minutes for the deployment to complete. Once the stack has been successfully created, copy the Amazon Resource Names (ARNs) of the Kinesis Firehose and S3 bucket from the output. These resource ARNs are required for the next steps in configuring API Gateway access logging.
+Wait a few minutes for the deployment to complete. Once the stack has been successfully created, copy the Amazon Resource Names (ARNs) of the Firehose stream and S3 bucket from the output. These resource ARNs are required for the next steps in configuring API Gateway access logging.
 
 ![deployment](./assets/kaidin-deployment3.jpg)
 
@@ -110,9 +110,9 @@ Wait a few minutes for the deployment to complete. Once the stack has been succe
 ![Pre-requisites1](./assets/kaidin-s3-permissions.jpg)
 
 
-## Configure API Gateway to stream access logs to this Kinesis Firehose delivery stream
+## Configure API Gateway to stream access logs to this Data Firehose stream
 
-1. You can now configure API Gateway to stream access logs to this Kinesis Firehose delivery stream. Follow these instructions to enable access logging on your API stages using the ARN of the Firehose delivery stream created via SAM template.
+1. You can now configure API Gateway to stream access logs to this Firehose delivery stream. Follow these instructions to enable access logging on your API stages using the ARN of the Firehose delivery stream created via SAM template.
 2. Under Log Format, choose the fields to include in the access logs in JSON format. Find examples in the API Gateway documentation as well as the full set of available fields in the $context variable. The below fields and mapped names are required for the analysis.
 
 ```
