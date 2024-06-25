@@ -30,7 +30,7 @@ As we are using Amazon QuickSight for the visualization part, you have the flexi
 The integration works by forwarding API Gateway access logs from your Amazon API Gateway to S3 via Amazon Kinesis Data Firehose. This solution uses the following AWS services to provide near real-time logging analytics:
 
 * Amazon S3 bucket ensuring durable and secure storage.
-* Amazon Kinesis Data Firehose for delivering logs into an S3 bucket.
+* Amazon Data Firehose for delivering logs into an S3 bucket.
 * AWS Lambda function for log enrichment.
 * AWS Glue crawler to provide fresher data to QuickSight.
 * Amazon QuickSight for analytics and visualization.
@@ -67,11 +67,13 @@ If you have not activated Amazon QuickSight in your AWS account, follow the step
 
 ## Implementation
 
-Note: This solution supports only [REST API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-rest-api.html).
+Note: This solution supports only the [REST API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-rest-api.html).
 
-This solution won’t deploy and configure an API Gateway and assumes you already have an API Gateway API. If you do not, follow [this tutorial](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-from-example.html) to create an API. 
+This solution won’t create an API Gateway in your AWS account and assumes you already have an API endpoint. If you do not, follow [this tutorial](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-from-example.html) to create one.
 
 Deploy an AWS SAM template into your account. This template creates all components of the analytics pipeline, including an Amazon S3 bucket, Amazon Kinesis Data Firehose, AWS Lambda functions, AWS Glue, and Amazon QuickSight dashboards and visuals, using Infrastructure as Code (IaC).
+
+Once deployment is complete, we will configure our existing API Gateway to deliver access logs to the deployed Amazon Data Firehose.
 
 ## Launch the AWS SAM Template
 
