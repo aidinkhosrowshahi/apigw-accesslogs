@@ -29,7 +29,7 @@ As we are using Amazon QuickSight for the visualization part, you have the flexi
 
 The integration works by forwarding API Gateway access logs from your Amazon API Gateway to S3 via Amazon Data Firehose. This solution uses the following AWS services to provide near real-time logging analytics:
 
-* Amazon S3 bucket ensuring durable and secure storage.
+* Amazon S3 bucket ensures durable and secure storage.
 * Amazon Data Firehose for delivering logs into an S3 bucket.
 * AWS Lambda function for log enrichment.
 * AWS Glue crawler to provide fresher data to QuickSight.
@@ -38,7 +38,7 @@ The integration works by forwarding API Gateway access logs from your Amazon API
   ![Architecture diagram](./assets/kaidin-solution-overview.jpg)
 
 ## Streamlining API Access Logs
-API access logs are streamed in near real-time from Amazon API Gateway to [Amazon Data Firehose](https://www.google.com/search?client=firefox-b-1-d&q=Amazon+Kinesis+Data+Firehose). Amazon Data Firehose buffers these records, enriching them with information from the API usage plans. It then writes batches of enhanced records to an Amazon S3 bucket, ensuring durable and secure storage. To enrich the access logs, an AWS Lambda function is used. The Lambda function retrieves API Gateway usage plan details and loads them into memory. During each invocation, it processes each access log record from Firehose stream by decoding it from base64-encoded binary. The record is then enriched with the usage plan name and customer name before being re-encoded to base64 binary and returned to the Firehose stream.
+API access logs are streamed in near real-time from Amazon API Gateway to [Amazon Data Firehose](https://www.google.com/search?client=firefox-b-1-d&q=Amazon+Kinesis+Data+Firehose). Amazon Data Firehose buffers these records, enriching them with information from the API usage plans. It then writes batches of enhanced records to an Amazon S3 bucket, ensuring durable and secure storage. To enrich the access logs, an AWS Lambda function is used. The Lambda function retrieves API Gateway usage plan details and loads them into memory. During each invocation, it processes each access log record from Firehose stream by decoding it from a base64-encoded binary. The record is then enriched with the usage plan name and customer name before being re-encoded to base64 binary and returned to the Firehose stream.
 
 ## Indexing Access Logs
 Metadata for the API access logs is stored in an [AWS Glue Data Catalog](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html), which Amazon QuickSight uses for querying. An AWS Glue crawler identifies and indexes newly written access logs. You can adjust the frequency of the Glue crawler to ensure fresher data is available in Amazon QuickSight by updating the DataRefreshFrequency parameter of the SAM template when deploying the solution. The default data refresh frequency is every 10 minutes (cron(0/10 * * * ? *)).
@@ -59,7 +59,7 @@ If you have not activated Amazon QuickSight in your AWS account, follow the step
 
 2. Once Amazon QuickSight account setup is complete, from the Amazon QuickSight console, select your username to open the menu. Select “Manage QuickSight”.
 3. On the left menu, select “Manage Groups”.
-4. Select “NEW GROUP” button and name the group in the format “<projectName>-Admins” (It is case sensitive). Select “CREATE.” For example, apiaccesslogs-Admins.
+4. Select the “NEW GROUP” button and name the group in the format “<projectName>-Admins” (It is case sensitive). Select “CREATE.” For example, apiaccesslogs-Admins.
 5. Add yourself as an administrator to the dashboard by selecting the newly created group name, then click “ADD USER.”
 6. Copy the project name without '-Admins' as this is required for the project name parameters in the SAM template. It needs to be the exact same name for deployment.
 
@@ -121,7 +121,7 @@ Wait a few minutes for the deployment to complete. Once the stack has been succe
 
 ## Data Visualization
 
-Once you configure API Gateway access logs, it takes a few minutes for the logs to appear in the QuickSight dashboard. This pre-built dashboard allows you to analyze API usage by visualizing components such as 30 days of API usage by domain, popular API paths, 400 errors (quota exceeded, unauthorized, and invalid-signature) requests, users hitting quota limits, and Cognito-based and IAM authorization. Additionally, you can filter visualizations and reports by date, customer, status, usage plan, IP, and users (IAM or Cognito users). You can also customize these visuals or create new ones for your business use case, as we have included additional context field in the API access logs.
+Once you configure API Gateway access logs, it takes a few minutes for the logs to appear in the QuickSight dashboard. This pre-built dashboard allows you to analyze API usage by visualizing components such as 30 days of API usage by domain, popular API paths, 400 errors (quota exceeded, unauthorized, and invalid-signature) requests, users hitting quota limits, and Cognito-based and IAM authorization. Additionally, you can filter visualizations and reports by date, customer, status, usage plan, IP, and users (IAM or Cognito users). You can also customize these visuals or create new ones for your business use case, as we have included additional context fields in the API access logs.
 
 **Dashboard overview**
 ![dashboard overview](./assets/kaidin-dashboard-overview.jpg)
@@ -139,13 +139,13 @@ Once you configure API Gateway access logs, it takes a few minutes for the logs 
 ## How to open the dashboard
 
 1. Navigate to the Amazon QuickSight console.
-2. Select Dashboad and open the deployed QuickSight dashboard.
+2. Select Dashboard and open the deployed QuickSight dashboard.
 
 ![dashboard overview](./assets/kaidin-dashboard-navigation.jpg)
 
 ## Cleaning Up 
 
-The sam delete command deletes an AWS SAM application by deleting the AWS CloudFormation stack, the artifacts that were packaged and deployed to Amazon S3 and Amazon ECR, and the AWS SAM template file.
+The SAM delete command deletes an AWS SAM application by deleting the AWS CloudFormation stack, the artifacts that were packaged and deployed to Amazon S3 and Amazon ECR, and the AWS SAM template file.
 
 Note - API Gateway access logs will be retained in the S3 bucket for future reference. You may need to manually delete the bucket if necessary.
 
